@@ -1,41 +1,10 @@
-/* eslint-disable react/prop-types */
-import swal from "sweetalert";
+/* eslint-disable no-unused-vars */
 
 
-const PhoneCard = ({ phone }) => {
+// eslint-disable-next-line react/prop-types
+const FavoritesCard = ({ phone }) => {
 
-    // eslint-disable-next-line no-unused-vars
     const { id, phone_name, brand_name, rating, price, image } = phone || {};
-
-    const handleAddToFavorites = () => {
-
-        const addfavoritesArrey = [];
-
-        const favoriteItems = JSON.parse(localStorage.getItem('favorites'));
-
-        if (!favoriteItems) {
-            addfavoritesArrey.push(phone);
-            localStorage.setItem('favorites', JSON.stringify(addfavoritesArrey));
-            swal("Good job!", "First Time Added", "success");
-        }
-        else {
-
-            const isExits = favoriteItems.find(phone => phone.id === id);
-
-            if (!isExits) {
-                addfavoritesArrey.push(...favoriteItems, phone);
-                localStorage.setItem('favorites', JSON.stringify(addfavoritesArrey));
-                swal("Good job!", "Not First Time Added", "success");
-            }
-            else{
-                swal("Bad job!", "Already Added", "error");
-            }
-
-
-        }
-
-    }
-
     return (
         <div className="flex justify-center items-center h-[80vh]">
             <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -56,7 +25,7 @@ const PhoneCard = ({ phone }) => {
 
                     <a className="inline-block" href="#">
                         <button
-                            onClick={handleAddToFavorites}
+                           
                             className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button"
                         >
@@ -91,4 +60,4 @@ const PhoneCard = ({ phone }) => {
     );
 };
 
-export default PhoneCard;
+export default FavoritesCard;
